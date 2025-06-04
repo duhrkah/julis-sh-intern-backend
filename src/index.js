@@ -49,7 +49,7 @@ app.use(rateLimit({
 }));
 
 // Health-Check
-app.get('/api/health', (req, res) => {
+app.get('/api/healt', (req, res) => {
   res.json({ status: 'ok' });
 });
 

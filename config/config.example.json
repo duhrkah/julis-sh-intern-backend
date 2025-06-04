@@ -1,0 +1,22 @@
+{
+  "development": {
+    "username": "DBDevelopmentUsername",
+    "password": "DBDevelopmentPassword",
+    "database": "DBDevelopmentName",
+    "host": "DBDevelopmentHost",
+    "dialect": "mysql",
+    "APN_KEY_ID": "APNDevelopmentKeyID",
+    "APN_TEAM_ID": "APNDevelopmentTeamID",
+    "APN_BUNDLE_ID": "APNDevelopmentBundleID"
+  },
+  "production": {
+    "username": "DBProductionUsername",
+    "password": "DBProductionPassword",
+    "database": "DBProductionName",
+    "host": "DBProductionHost",
+    "dialect": "mysql",
+    "APN_KEY_ID": "APNProductionKeyID",
+    "APN_TEAM_ID": "APNProductionTeamID",
+    "APN_BUNDLE_ID": "APNProductionBundleID"
+  }
+}

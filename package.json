@@ -1,0 +1,46 @@
+{
+    "name": "julis-sh-intern-backend",
+    "version": "1.0.0",
+    "main": "src/index.js",
+    "type": "module",
+    "scripts": {
+        "dev": "nodemon src/index.js",
+        "start": "NODE_ENV=production node src/index.js",
+        "start:dev": "NODE_ENV=development node src/index.js",
+        "start:prod": "NODE_ENV=production node src/index.js",
+        "lint": "eslint .",
+        "db:migrate": "sequelize db:migrate",
+        "db:migrate:undo": "sequelize db:migrate:undo",
+        "db:migrate:undo:all": "sequelize db:migrate:undo:all",
+        "db:seed": "sequelize db:seed",
+        "db:seed:undo": "sequelize db:seed:undo",
+        "db:seed:undo:all": "sequelize db:seed:undo:all"
+    },
+    "dependencies": {
+        "@microsoft/microsoft-graph-client": "^3.0.3",
+        "@parse/node-apn": "^6.5.0",
+        "bcryptjs": "^3.0.2",
+        "cookie-parser": "^1.4.7",
+        "cors": "^2.8.5",
+        "dotenv": "^16.3.1",
+        "express": "^4.18.2",
+        "express-rate-limit": "^7.5.0",
+        "express-validator": "^7.2.1",
+        "helmet": "^8.1.0",
+        "isomorphic-fetch": "^3.0.0",
+        "jsonwebtoken": "^9.0.2",
+        "jwt-decode": "^4.0.0",
+        "mariadb": "^3.4.2",
+        "multer": "^1.4.5-lts.1",
+        "mysql2": "^3.14.1",
+        "nodemailer": "^7.0.3",
+        "passport-azure-ad": "^4.3.5",
+        "sequelize": "^6.37.7",
+        "winston": "^3.10.0"
+    },
+    "devDependencies": {
+        "eslint": "^8.56.0",
+        "nodemon": "^3.0.3",
+        "sequelize-cli": "^6.6.3"
+    }
+}

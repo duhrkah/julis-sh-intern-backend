@@ -1,0 +1,47 @@
+# Node.js
+node_modules/
+.env.development
+.env.production
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Build
+/dist/
+/build/
+/uploads/
+coverage/
+
+# macOS
+.DS_Store
+
+# VSCode
+.vscode/
+
+# Backend
+backend/node_modules/
+backend/.DS_Store
+backend/coverage/
+backend/uploads/
+backend/logs/
+backend/config/config.json
+
+# System
+Thumbs.db
+*.swp
+
+# Sonstiges
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+*.pem
+*.p8
+*.key
+*.crt
+*.cert
+*.p12
+*.mobileprovision
+config/config.json

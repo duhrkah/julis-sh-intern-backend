@@ -1,6 +1,7 @@
 # Node.js
 node_modules/
 .env.development
+.env.test
 .env.production
 *.log
 npm-debug.log*

@@ -9,6 +9,16 @@
     "APN_TEAM_ID": "APNDevelopmentTeamID",
     "APN_BUNDLE_ID": "APNDevelopmentBundleID"
   },
+  "test": {
+    "username": "DBTestUsername",
+    "password": "DBTestPassword",
+    "database": "DBTestName",
+    "host": "DBTestHost",
+    "dialect": "mysql",
+    "APN_KEY_ID": "APNTestKeyID",
+    "APN_TEAM_ID": "APNTestTeamID",
+    "APN_BUNDLE_ID": "APNTestBundleID"
+  },
   "production": {
     "username": "DBProductionUsername",
     "password": "DBProductionPassword",

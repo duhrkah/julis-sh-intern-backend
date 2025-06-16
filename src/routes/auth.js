@@ -104,49 +104,11 @@ router.post('/reset-password', async (req, res) => {
   res.json({ message: 'Passwort erfolgreich zurückgesetzt.' });
 });
 
-// Microsoft SSO-Login
-router.post('/microsoft', async (req, res) => {
-  const { token } = req.body;
-  const ip = req.ip;
-  const now = new Date().toISOString();
-  let email = null;
-  try {
-    if (!token) {
-      console.log(`[${now}] [MS-Login] Versuch ohne Token von IP ${ip}`);
-      return res.status(400).json({ message: 'Kein Token übergeben.' });
-    }
-    const decoded = jwtDecode(token);
-    email = decoded.preferred_username || decoded.email;
-    const displayName = decoded.name || decoded.displayName || email;
-    const allowedDomain = process.env.MS_ALLOWED_DOMAIN || '@julis-sh.de';
-    console.log(`[${now}] [MS-Login] Loginversuch von IP ${ip}, Email: ${email}`);
-    if (!email || !email.endsWith(allowedDomain)) {
-        console.log(`[${now}] [MS-Login] Abgelehnt: Nicht erlaubte Domain (${email}) von IP ${ip}`);
-        return res.status(403).json({ message: 'Nur Organisation-Accounts erlaubt.' });
-    }
-    // Rolle aus Azure-Token bestimmen
-    const msRoles = decoded.roles || [];
-    let role = 'user';
-    if (msRoles.includes('admin')) role = 'admin';
-    else if (msRoles.includes('lgst')) role = 'lgst';
-    else if (msRoles.includes('vorstand')) role = 'vorstand';
-    // User suchen oder anlegen
-    let user = await User.findOne({ where: { email } });
-    if (!user) {
-      user = await User.create({ email, password: crypto.randomBytes(32).toString('hex'), role });
-      console.log(`[${now}] [MS-Login] Neuer User angelegt: ${email} mit Rolle ${role}`);
-    } else if (user.role !== role) {
-      user.role = role;
-      await user.save();
-      console.log(`[${now}] [MS-Login] Rolle für ${email} auf ${role} synchronisiert`);
-    }
-    // Rolle immer aus DB
-    const appToken = jwt.sign({ id: user.id, role: user.role, email: user.email, displayName }, process.env.JWT_SECRET, { expiresIn: '15m' });
-    res.json({ token: appToken, user: { email: user.email, role: user.role, displayName } });
-  } catch (err) {
-    console.log(`[${now}] [MS-Login] Fehler bei Loginversuch von IP ${ip}, Email: ${email}, Fehler: ${err.message}`);
-    res.status(401).json({ message: 'Microsoft-Token ungültig.' });
-  }
+// Microsoft SSO-Login (temporär deaktiviert)
+router.post('/microsoft', (req, res) => {
+  res.status(503).json({ 
+    message: 'Microsoft-Login ist temporär deaktiviert. Bitte nutzen Sie den Datenbank-Login.' 
+  });
 });
 
 // Token erneuern (Sliding Expiration)
